@@ -1,4 +1,5 @@
 using System.Drawing;
+using kids_math_ui;
 
 namespace Graficador
 {
@@ -54,15 +55,7 @@ namespace Graficador
             Graficar();
         }
 
-        private Point Recta(int m, int b, int x)
-        {
-            return new Point(x, m * x + b);
-        }
-
-        private Point Parabola(int a, int b, int c, int x)
-        {
-            return new Point(x, a * (x * x) + b * x + c);
-        }
+       
 
         private void Graficar()
         {
@@ -78,34 +71,15 @@ namespace Graficador
             _graphic.DrawLine(Pens.Green, (int)(-1 * dx), 0, (int)dx, 0);
             _graphic.DrawLine(Pens.Green, 0, (int)dy, 0, (int)(-1 * dy));
 
+            Recta recta1 = new Recta(2, 0);
+            Recta recta2 = new Recta(1, 0);
+            Recta recta3 = new Recta(-2, 50);
+            Recta recta4 = new Recta(15, 56);
 
-            int inicio = -100;
-            int final = 100;
-            int totalPuntos = final - inicio;
-            var puntosRecta1 = new PointF[totalPuntos];
-            var puntosRecta2 = new PointF[totalPuntos];
-            var puntosRecta3 = new PointF[totalPuntos];
-            int indexArreglo = 0;
-            for (int x = inicio; x < final; x++)
-            {
-                var puntoRecta1 = Recta(2, 0, x);
-                puntoRecta1.Y *= -1;
-
-                var puntoRecta2 = Recta(1, 0, x);
-                puntoRecta2.Y *= -1;
-
-                var puntoRecta3 = Recta(-2, 50, x);
-                puntoRecta3.Y *= -1;
-
-                puntosRecta1[indexArreglo] = puntoRecta1;
-                puntosRecta2[indexArreglo] = puntoRecta2;
-                puntosRecta3[indexArreglo] = puntoRecta3;
-                indexArreglo++;
-            }
-
-            _graphic.DrawCurve(Pens.Red, puntosRecta1);
-            _graphic.DrawCurve(Pens.Blue, puntosRecta2);
-            _graphic.DrawCurve(Pens.Orange, puntosRecta3);
+            _graphic.DrawCurve(Pens.Red, recta1.Puntos);
+            _graphic.DrawCurve(Pens.Blue, recta2.Puntos);
+            _graphic.DrawCurve(Pens.Orange, recta3.Puntos);
+            _graphic.DrawCurve(Pens.Purple, recta4.Puntos);
         }
 
         private void DefinirEjes()
