@@ -37,6 +37,7 @@
             // picCanvas
             // 
             picCanvas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            picCanvas.BackColor = Color.White;
             picCanvas.BorderStyle = BorderStyle.FixedSingle;
             picCanvas.Location = new Point(12, 12);
             picCanvas.Name = "picCanvas";
@@ -79,6 +80,7 @@
             Controls.Add(picCanvas);
             Name = "frmGraficador";
             Text = "Form1";
+            SizeChanged += frmGraficador_SizeChanged;
             ((System.ComponentModel.ISupportInitialize)picCanvas).EndInit();
             ResumeLayout(false);
         }
