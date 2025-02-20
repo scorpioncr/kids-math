@@ -53,7 +53,7 @@ namespace Graficador
 
             var matrix = new System.Drawing.Drawing2D.Matrix(1, 0, 0, -1, 1, 1);
             _graphic.MultiplyTransform(matrix);
-            //_graphic.ScaleTransform(100, 100);
+            _graphic.ScaleTransform((float)numDX.Value, (float)numDY.Value);
 
             _graphic.DrawLine(Pens.Green, (int)(-1 * dx), 0, (int)dx, 0);
             _graphic.DrawLine(Pens.Green, 0, (int)dy, 0, (int)(-1 * dy));
