@@ -5,15 +5,19 @@ namespace Graficador
 {
     public partial class frmGraficador : Form
     {
+        private Graphics _graphic;
+        private Recta[] _rectas;
+        private int _posicionArreglo;
         public frmGraficador()
         {
             InitializeComponent();
 
 
             _graphic = picCanvas.CreateGraphics();
-            //DefinirPlanoCartesiano();
+            _rectas = new Recta[9];
+            _posicionArreglo = 0;
         }
-        private Graphics _graphic;
+
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
@@ -31,15 +35,15 @@ namespace Graficador
 
             DefinirPlanoCartesiano();
 
-            Recta recta1 = new Recta(2, 0, new Tuple<int, int>(-100, 100));
-            Recta recta2 = new Recta(1, 0, new Tuple<int, int>(-100, 100));
-            Recta recta3 = new Recta(-2, 50, new Tuple<int, int>(-20, 30));
-            Recta recta4 = new Recta(15, 56, new Tuple<int, int>(-10, 10));
+            //Recta recta1 = new Recta(2, 0, new Tuple<int, int>(-100, 100));
+            //Recta recta2 = new Recta(1, 0, new Tuple<int, int>(-100, 100));
+            //Recta recta3 = new Recta(-2, 50, new Tuple<int, int>(-20, 30));
+            //Recta recta4 = new Recta(15, 56, new Tuple<int, int>(-10, 10));
 
-            _graphic.DrawCurve(Pens.Red, recta1.Puntos);
-            _graphic.DrawCurve(Pens.Blue, recta2.Puntos);
-            _graphic.DrawCurve(Pens.Orange, recta3.Puntos);
-            _graphic.DrawCurve(Pens.Purple, recta4.Puntos);
+            //_graphic.DrawCurve(Pens.Red, recta1.Puntos);
+            //_graphic.DrawCurve(Pens.Blue, recta2.Puntos);
+            //_graphic.DrawCurve(Pens.Orange, recta3.Puntos);
+            //_graphic.DrawCurve(Pens.Purple, recta4.Puntos);
         }
 
         private void DefinirPlanoCartesiano()
@@ -81,6 +85,14 @@ namespace Graficador
         private void frmGraficador_SizeChanged(object sender, EventArgs e)
         {
             Graficar();
+        }
+
+        private void btnAgregarRecta_Click(object sender, EventArgs e)
+        {
+            Tuple<int, int> rango = new Tuple<int, int>((int)numDesde.Value, (int)numHasta.Value);
+            Recta nuevaRecta = new Recta((float)numPendiente.Value, (float)numInterseccion.Value, rango);
+            _rectas[_posicionArreglo] = nuevaRecta;
+            _posicionArreglo += 1;
         }
     }
 }

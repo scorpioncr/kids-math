@@ -140,6 +140,7 @@
             btnAgregarRecta.TabIndex = 10;
             btnAgregarRecta.Text = "&Agregar";
             btnAgregarRecta.UseVisualStyleBackColor = true;
+            btnAgregarRecta.Click += btnAgregarRecta_Click;
             // 
             // comboBox1
             // 
