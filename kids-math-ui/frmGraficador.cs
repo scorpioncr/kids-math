@@ -44,6 +44,11 @@ namespace Graficador
             //_graphic.DrawCurve(Pens.Blue, recta2.Puntos);
             //_graphic.DrawCurve(Pens.Orange, recta3.Puntos);
             //_graphic.DrawCurve(Pens.Purple, recta4.Puntos);
+            for (int i = 0; i < _posicionArreglo; i++)
+            {
+               Recta rectaConPuntos = _rectas[i];
+                _graphic.DrawCurve(Pens.Blue, rectaConPuntos.Puntos);
+            }
         }
 
         private void DefinirPlanoCartesiano()
